@@ -382,3 +382,38 @@ public class TreasureHunt{
   }
 }
 
+//Ungraded
+
+//Task-02 (01)
+import java.util.Scanner;
+public class LargeSmallLocation{
+    public static void main (String [] args){
+        Scanner sc= new Scanner(System.in);
+        int [] A = new int [5];
+        
+        for(int i=0;i<5;i++){
+            A[i]=sc.nextInt();
+        }
+        /*A[] er values assign korar pore egulo nite hobe nahole
+         int large=A[0];int small=A[0]; egulote ager value(0) assign hoye jabe*/
+        int large=A[0];
+        int small=A[0];
+        int largeIdx=0;
+        int smallIdx=0;
+         for(int i=0;i<5;i++){
+            for(int j=i+1;j<5;j++){
+                if(A[i]>large){
+                    large=A[i];
+                    largeIdx=i;
+                }
+                if(A[i]<small){
+                    small=A[i];
+                    smallIdx=i;
+                }
+            }
+        }
+         System.out.println("The largest number "+large+" was found at location "+largeIdx);
+         System.out.println("The smallest number "+small+" was found at location "+smallIdx);
+                            
+    }
+}
