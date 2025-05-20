@@ -190,3 +190,148 @@ public class Employee{
         System.out.printf("Employee Name: %s\nEmployee Salary: %.1f Tk\nEmployee Designation: %s\n",nme,slary,desig);
     }
 }
+
+
+//Ungraded
+
+
+//Task - 01 (02)
+public class CatTest7{
+    public static void main(String [] args){ 
+        Cat c1 = new Cat(); 
+        System.out.println("===================");
+        c1.printCat();
+        c1.color = "Black"; 
+        System.out.println("===================");
+        c1.printCat(); 
+        c1.color = "Brown"; 
+        c1.action = "jumping"; 
+        System.out.println("===================");
+        c1.printCat(); 
+    } 
+} 
+
+class Cat{
+    public String color="White";
+    public String action="sitting";
+    
+    public void printCat(){
+        System.out.printf("%s cat is %s\n",this.color,this.action);
+    }
+}
+            
+
+
+//Task - 02 (02)
+public class BirdTest8{
+    public static void main(String args[]) { 
+        Bird b1 = new Bird();
+        b1.name = "Parrot";
+        b1.flyUp(3);
+        b1.makeNoise();
+        b1.flyDown(5);
+        b1.flyDown(2);
+        b1.flyDown(1);
+        Bird b2 = new Bird();
+        b2.name = "Eagle"; 
+        b2.flyUp(5);
+        b2.flyDown(5);
+        b2.makeNoise(); 
+    }  
+}
+class Bird{
+    public String name;
+    public int upHeight;
+    public int downHeight;
+    
+    public void flyUp(int up){
+        this.upHeight=up;
+        System.out.printf("%s has flown up %d feet.\n",this.name,this.upHeight);
+    }
+    public void flyDown(int down){
+        this.downHeight=down;
+        if(downHeight>upHeight){
+            System.out.printf("%s cannot fly down %d feet.\n",this.name,this.downHeight);
+        }
+        else if(downHeight==1 || downHeight==upHeight){
+            System.out.printf("%s has flown down %d feet and and landed.\n",this.name,this.downHeight);
+        }
+        else{
+            System.out.printf("%s has flown down %d feet\n",this.name,this.downHeight);
+        }
+    }
+    public void makeNoise(){
+        if(this.name.equals("Parrot")){
+            System.out.println("Sqawk");
+        }
+        else if(this.name.equals("Eagle")){
+            System.out.println("Squee");
+        }
+    }
+}
+
+
+     
+//Ungraded Task - 03 (02)
+public class BurgerMaker{
+    public static void main(String [] args){
+        ChickenBurger b1 = new ChickenBurger();
+        System.out.println(b1.bun);
+        System.out.println(b1.price);
+        System.out.println(b1.sauceOption);
+        System.out.println(b1.spiceLevel);
+        System.out.println("----------1----------");
+        System.out.println(b1.serveBurger());
+        System.out.println("----------2----------");
+        b1.customizeSpiceLevel("Extreme Jhaal");
+        b1.customizeSpiceLevel("Spicy");
+        System.out.println("----------3----------");
+        System.out.println(b1.serveBurger());
+        System.out.println("----------4----------");
+        ChickenBurger b2 = new ChickenBurger();
+        b2.bun = "Brioche";
+        b2.price += 50;
+        b2.sauceOption = "Regular";
+        b2.customizeSpiceLevel("Naga");
+        System.out.println("----------5----------");
+        System.out.println(b2.serveBurger());
+    }
+}
+class ChickenBurger{
+    public String bun="Sesame";
+    public int price=200;
+    public String sauceOption="Less";
+    public String spiceLevel="Not Set";
+    public boolean set=false;
+    public String [] available={"Mild","Spicy","Naga","Extreme"};
+    
+    public void customizeSpiceLevel(String spice){
+        this.spiceLevel=spice;
+        
+        for(int i=0;i<available.length;i++){
+            if(available[i].equals(spiceLevel)){
+                this.set=true;
+                System.out.printf("Spice level set to %s.\n",this.spiceLevel);
+                break;
+            }
+            else{
+                this.set=false;
+            }
+        }
+        if(set==false){
+            System.out.println("This spice level is unavailable.");
+        }
+    }
+    public String serveBurger(){
+        if(set==true){
+            return "The burger is being served:-\nBun Type: "+this.bun+"\nPrice: "+this.price+"\nSauce Option: "+this.sauceOption+"\nSpice Level: "+this.spiceLevel;
+        }
+        else{
+            return "Cannot serve now. Customize spice level first.";
+        }
+    }
+}
+
+
+
+
