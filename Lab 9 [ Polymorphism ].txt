@@ -1,0 +1,252 @@
+//Assignment 09
+
+//Task 01 (a)
+public class Pokemon{
+  public String name;
+  
+  public Pokemon(String name){
+    this.name=name;
+  }
+  public void attack(){
+    System.out.printf("%s attacks with a basic move!\n",name);
+  }
+  public void attack(String weapon){
+    System.out.printf("%s uses %s!\n",name,weapon);
+  }
+  public void attack(String weapon,int point){
+    System.out.printf("%s uses %s with power %d!\n",this.name,weapon,point);
+  }
+} 
+
+//Task 1 (b) Compile time polymorphism is depicted in the code.
+
+
+
+
+//Task 2
+   //Mango class
+public class Mango extends Fruit{
+    public Mango( ){
+       super( true , "Mango" );
+    }
+    public String toString( ){
+        String statement =super.getName()+"s are bad for you";
+        return statement;
+    }
+}
+   //Jackfruit class
+public class Jackfruit extends Fruit{
+    public Jackfruit( ){
+        super( false , "Jackfruit" );
+    }
+    public String toString( ){
+        String statement =super.getName()+"s are good for you";
+        return statement;
+    }
+}
+
+
+//Task 3
+public class CSEStudent extends Student{
+    public String msg="I want to transfer to CSE";
+    public String shout( ){
+        return msg;
+    }
+}
+public class CSE111Student extends Student{
+    public String msg="I love Java Programming";
+    public String shout( ){
+        return msg;
+    }
+}
+
+
+
+//Task 4
+
+public class PlatinumCard extends CreditCard{
+    public int spent;
+    public PlatinumCard(String name,String acc){
+        super(name,acc,100);
+    }
+    public void spendCash(int am){
+        this.spent=am;
+        if(am%100==0){
+            super.rewardPoints+=( (am/100) * 2 );
+        }
+        else{
+            super.rewardPoints=rewardPoints;
+        }
+        System.out.printf("Previous Reward Points: 100\nReward points after spending %d taka: %d\n",this.spent,super.rewardPoints);
+    }
+    public void cardDetails(){
+        super.cardDetails();
+    }
+}
+
+public class SignatureCard extends CreditCard{
+    public int spent;
+    public SignatureCard(String name,String acc){
+        super(name,acc,200);
+    }
+    public void spendCash(int am){
+        this.spent=am;
+        if(am%100==0){
+            super.rewardPoints+=((am/100)*4);
+        }
+        else{
+            super.rewardPoints=rewardPoints;
+        }
+        System.out.printf("Previous Reward Points: 200\nReward points after spending %d taka: %d\n",spent,super.rewardPoints);
+    }
+    public void cardDetails(){
+        int compan=5;
+        super.cardDetails();
+        System.out.printf("Possible Number of Companions for Lounge: %d\n",compan);
+    }
+}
+
+
+
+//Task 5
+
+public class Character {
+  public String name;
+  public int level;
+  
+  public Character(String name, int level) {
+    this.name = name;
+    this.level = level;
+  }
+  
+  public void specialMove() {
+    System.out.println("Character uses a generic move.");
+  }
+  public boolean equals(Character obj){
+      if((name.equals(obj.name)) && (level==obj.level)){
+          return true;
+      }
+      else{
+        return false;
+      }
+  }
+}
+
+public class Warrior extends Character{
+    public Warrior(String name,int level){
+        super(name,level);
+    }
+    public void specialMove(){
+        System.out.printf("%s performs a heavy sword slash!\n",super.name);
+    }
+}
+
+public class Mage extends Character{
+    public Mage(String name,int level){
+        super(name,level);
+    }
+    public void specialMove(){
+        System.out.printf("%s casts a powerful fireball!\n",super.name);
+    }
+}
+
+public class Paladin extends Warrior{
+    public Paladin(String name,int level){
+        super(name,level);
+    }
+    public void specialMove(){
+        System.out.printf("%s unleashes a holy strike!\n",super.name);
+    }
+}
+
+
+
+//Task 06
+    //Garage class 
+public class Garage{
+    public int car_c;
+    public int bike_b;
+    public int car_cap=2;
+    public int bike_cap=3;
+    public Car [] cars=new Car [car_cap];
+    public Bike [] bikes=new Bike [bike_cap];
+    
+    public Garage(int c,int b){
+        this.car_cap=c;
+        this.bike_cap=b;
+        System.out.printf("Welcome to the Garage!\nCar Capacity: %d\nBike Capacity: %d\n",cars.length,bikes.length);
+    }
+    public void addVehicle(Vehicle veh){
+        if(veh instanceof Car){
+            if(car_c<cars.length){
+                Car c_ar=(Car)veh;
+                cars[car_c++]=c_ar;
+                System.out.printf("A %s CAR has been added to the Garage\n",veh.getBrand());
+            }
+            else{
+                System.out.printf("Can't add more Cars! Capacity: %d\n",bike_cap);
+            }
+        }
+        if(veh instanceof Bike){
+            if(bike_b<bikes.length){
+                Bike bi_ke=(Bike)veh;
+                bikes[bike_b++]=bi_ke;
+                System.out.printf("A %s BIKE has been added to the Garage\n",veh.getBrand());
+            }
+            else{
+                System.out.printf("Can't add more Bikes! Capacity: %d\n",bike_cap);
+            }
+        }
+    }
+}
+    //Car class 
+public class Car extends Vehicle{
+    public String model;
+    public int door;
+    public boolean ai=false;
+    
+    public Car(String brand,String model,int year,int door,int wheel,boolean ai){
+    super(brand,year);
+    super.setWheels(wheel);
+    this.model=model;
+    this.door=door;
+    this.ai=ai;
+    }
+    public String toString(){
+        return "Car "+super.toString()+", Model: "+this.model+", Doors: "+this.door+", AI: "+this.ai;
+    }
+    
+    public void startAutoPilot(){
+        if(!this.ai){
+            System.out.printf("%s:%s has NO AutoPilot\n",getBrand(),model);
+        }
+        else{
+            System.out.printf("%s:%s  AutoPilot Started\n",getBrand(),model);
+        }
+    }
+}
+    //Bike  class
+public class Bike extends Vehicle{
+    public String [] bikes;
+    public String [] cars;
+    public boolean side_car;
+    public String model;
+    
+    public Bike(String brand,String model,int year,int wheel,boolean side){
+        super(brand,year);
+        super.setWheels(wheel);
+        this.model=model;
+        this.side_car=side;
+    }
+    public String toString(){
+        return "Bike "+super.toString()+", Model: "+this.model+", Side Car: "+this.side_car;
+    }
+    public void doAWheelie(){
+        if(side_car){
+            System.out.printf("Wheelie Failed. %s:%s has SideCar\n",super.getBrand(),this.model);
+        }
+        else{
+            System.out.printf("%s :%s is doing Wheelie!\n",super.getBrand(),model);
+        }
+    }        
+}

@@ -1,0 +1,118 @@
+//Assignment 10
+
+//Task 03
+
+class Striker extends Football{
+    public int goals;
+    public int target;
+    public double performance;
+    
+    public Striker(String name,int age,int stamina,int goals,int targeted){
+        super(name,age,stamina);
+        this.goals=goals;
+        this.target=targeted;
+    }
+    public void display(){
+        super.display();
+        System.out.printf("Goals: %d\nShots on target: %d\n",goals,target);
+    }
+    public void calculatePerformance(){
+        this.performance=((double)goals)/((double)target);
+        System.out.printf("Performance: %.3f\n",this.performance);
+    }
+}
+class Defender extends Football{
+    public int tackles;
+    public int intercept;
+    public double performance;
+    
+    public Defender(String name,int age,int stamina,int tackles,int interceptions){
+        super(name,age,stamina);
+        this.tackles=tackles;
+        this.intercept=interceptions;
+    }
+    public void display(){
+       super.display();
+       System.out.printf("Tackles: %d\nInterceptions: %d\n",tackles,intercept);
+    }
+    public void calculatePerformance(){
+        this.performance=((double)intercept)/((double)tackles);
+        System.out.printf("Performance: %.1f\n",this.performance);
+    }
+}
+
+
+
+//Task 05
+class Dragon extends MagicalCreature{
+    public int power;
+    
+    
+    public Dragon(String name,int age,int level){
+        super(name,age);
+        this.power=level;
+    }
+    public void makeSound(){
+        System.out.printf("%s roars with a fiery breath!\n",super.name);
+    }
+    public void performMagic(){
+        System.out.printf("%s breathes fire with power level: %d\n",super.name,this.power);
+    }
+    public void fly(){
+        System.out.printf("%s flies through the sky.\n",super.name);
+    }
+}
+class Phoenix extends MagicalCreature{
+    public int rebirth_capacity;
+    
+    public Phoenix(String name,int age,int capacity){
+        super(name,age);
+        this.rebirth_capacity=capacity;
+    }
+    public void makeSound() {
+        System.out.printf("%s sings an enchanting song.\n",super.name);
+    }
+    public void performMagic(){
+        System.out.printf("%s is reborn with %d rebirth cycles.\n",super.name,this.rebirth_capacity);
+    }
+    public void regenerate(){
+        System.out.printf("%s regenerates its body in a burst of flames.\n",super.name);
+    }
+}
+
+
+
+//Task 06
+class Bondhus extends SocialMedia{
+    public int limit=5;
+    public String [] text=new String [limit];
+    public int count;
+    
+    public Bondhus(String name,String mail){
+        super(name,mail);
+    }
+    public void showSentbox(){
+        System.out.println(super.userName+"'s sentbox:");
+        if(count!=0){
+            if(count<=limit){
+                for(int i=0;i<count;i++){
+                    System.out.println(this.text[i]);
+                }
+            }
+            else{
+                System.out.println("Sentbox is full.");
+            }
+        }
+        else{
+            System.out.println("No sent messages.");
+        }
+    }
+    public void sendMessage(String msg){
+        if(count<limit){
+           this.text[count++]=msg;
+        }
+    }
+    public String toString() {
+        return super.toString()+"\nMassages Sent: "+count;
+    }
+}

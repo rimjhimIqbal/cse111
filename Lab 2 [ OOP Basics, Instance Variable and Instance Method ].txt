@@ -1,0 +1,192 @@
+//ASSIGNMENT 02
+
+//Task - 01 (a)
+public class UniversityTester{
+    public static void main(String [] args){
+        University s1=new University();
+        University s2=new University();
+        System.out.println(s1);
+        System.out.println(s2);
+        if(s1==s2){
+            System.out.println("The location of the objects are the same");
+        }
+        else{
+            System.out.println("The location of the objects are not the same");
+        } 
+        System.out.println("Name of the university: " + s1.name);
+        System.out.println("Name of the country: " + s1.country);
+        
+        System.out.println("Name of the university: " + s2.name);
+        System.out.println("Name of the country: " + s2.country); 
+    }
+}
+
+
+//Task - 01 (b)
+public class UniversityTester{
+    public static void main(String [] args){
+        University s1=new University();
+        University s2=new University();
+        
+        s1.name="Imperial College London";
+        s1.country="England";
+        s2.name="BRAC University";
+        s2.country="Bangladesh";
+        
+        System.out.printf("Name: %s\nCountry: %s\n",s1.name,s1.country);
+        System.out.printf("Name: %s\nCountry: %s\n",s2.name,s2.country);
+         
+        if(s1.name==s2.name && s1.country==s2.country){
+            System.out.println("The instance variables holds the same values");
+        }
+        else{
+            System.out.println("The instance variables do not hold the same values");
+        }
+    }
+}
+
+
+//Task - 02
+public class Student{
+    public String name="Default";
+    public int id;
+}
+
+
+//Task - 03
+public class CSECourse{
+    public String courseName="Programming Language II";
+    public String courseCode="CSE111";
+    public int credit=3;
+}
+
+
+//Task - 04
+public class ImaginaryNumber{
+    public int realPart;
+    public int imaginaryPart;
+    
+    public void printNumber(){
+        System.out.printf("%d + %di\n",realPart,imaginaryPart);
+    }
+}
+
+
+//Task - 05
+class Course{
+    public String couName;
+    public String couCode;
+    public int cred;
+    
+    public void updateDetails(String nam,String cod,int cre){
+        this.couName=nam;
+        this.couCode=cod;
+        this.cred=cre;
+    }
+    public void displayCourse(){
+        System.out.printf("Course Name:\n%s\nCourse Code: %s\nCourse Credit:%d\n",couName,couCode,cred);
+    }
+}
+
+
+//Task - 06
+public class Assignment{
+    public int tasks;
+    public String difficulty;
+    public boolean submission=false;
+    
+    public String makeOptional(){
+         if(submission==false){//already false e ache
+            return "Submission is already not required";
+        }
+        else{//if true thake then
+            submission=false;//make it false
+            return "Assignment will not require submission";
+        }
+    }
+    public void printDetails(){
+        System.out.println("Number of tasks: " + tasks);
+        System.out.println("Difficulty level: " + difficulty);
+        System.out.println("Submission required: " + submission);
+    }
+}
+
+
+//Task - 07
+public class CellPhone{
+    public String model="Unknown";
+    public int stores=0;
+    public String [] phoneCons=new String [3];
+    
+    public void storeContact(String names){
+        if(stores<3){
+            phoneCons[stores]=names;
+            System.out.println("Contact Stored");
+            stores++;
+        }
+        else{
+            System.out.println("Memory full. New contact can't be stored.");
+        }
+    }
+    public void printDetails(){
+        System.out.printf("Phone model %s\nContact Stored %d\n",model,stores);
+        if(stores>0){
+            System.out.println("Stored Contacts:");
+            int i=0;
+            while(i<stores){
+                System.out.println(phoneCons[i]);
+                i++;
+            }
+        }
+    }
+}
+
+
+//Task - 08
+
+public class Employee{
+    public String nme;
+    public double slary;
+    public String desig;
+    public double taxAm;
+    
+    public void newEmployee(String name){
+        this.nme=name;
+        this.slary=30000.0;
+        this.desig="Junior";
+    }
+    
+    public void calculateTax(){
+        if(this.slary>50000){
+            this.taxAm=(this.slary*30)/100;
+        }
+        else  if(this.slary>30000){
+            this.taxAm=(this.slary*10)/100;
+        }
+        else{
+            System.out.println("No need to pay tax");
+        }
+        if(this.taxAm!=0){
+        System.out.printf("%s Tax Amount: %.2f Tk\n",this.nme,this.taxAm);
+        }
+    }
+    
+    public void promoteEmployee(String prom){
+        this.desig=prom;
+        System.out.println(this.nme + " has been promoted to " + this.desig);
+        if(this.desig.equals("senior")){
+            slary+=25000;
+        }
+        else if(this.desig.equals("lead")){
+            slary+=50000;
+        }
+        else if(this.desig.equals("manager")){
+            slary+=75000;
+        }
+        System.out.printf("New Salary: %.2f Tk\n", this.slary);
+    }
+    
+    public void displayInfo(){
+        System.out.printf("Employee Name: %s\nEmployee Salary: %.1f Tk\nEmployee Designation: %s\n",nme,slary,desig);
+    }
+}

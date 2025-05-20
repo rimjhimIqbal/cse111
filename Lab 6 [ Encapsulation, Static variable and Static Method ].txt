@@ -1,0 +1,290 @@
+//Assignment 06
+
+//Task 01
+public class Product{
+    private String pr_name;
+    private double pr_price;
+    private boolean check=true;
+    private int pr_quant;
+    
+    public Product(){
+        this.pr_name="Unknown";
+        this.pr_price=0.0;
+    }
+    public Product(String name, double price){
+        this.pr_name=name;
+        this.pr_price=price;
+    }
+    public void displayInfo(boolean flag){
+        if(check){
+            displayInfo();
+            System.out.printf("Quantity:%d\n",pr_quant);
+        }
+        else{
+            displayInfo();
+        }
+    }
+    public void setQuantity(int qua){
+        this.pr_quant=qua;
+    }
+    public int getQuantity(){
+        return pr_quant;
+    }
+    public void displayInfo(){
+        System.out.printf("Product Name: %s\nPrice: $%.1f\n",pr_name,pr_price);
+    }
+    public void setPrice(){
+        this.pr_price=1200.0;
+    }
+    public double getPrice(){
+        return pr_price;
+    }
+}
+
+
+
+//Task 02
+public class Passenger{
+  public static int no_of_passenger=0;
+  public static  double total_fare=0.0;
+  public String na_me;
+  public double dist_ance;
+  public double wei_ght;
+  public boolean yes_weight;
+  public double fa_re;
+  
+  public Passenger(String name,double dist){
+    this.na_me=name;
+    this.dist_ance=dist;
+    this.yes_weight=false;
+    this.no_of_passenger++;
+  }
+  public void passengerDetails(){
+      if(!yes_weight){
+          this.fa_re=this.dist_ance*20;
+          this.total_fare+=this.fa_re;
+          System.out.printf("Name: %s\nFare: %.1f TK\n",na_me,fa_re);
+          
+      }
+      else{
+          this.fa_re=((this.dist_ance*20)+(wei_ght*10));
+          this.total_fare+=this.fa_re;
+          System.out.printf("Name: %s\nFare: %.1f TK\n",na_me,fa_re);
+      }
+  }
+  public void storeBaggageWeight(double weight){
+    this.wei_ght=weight;
+    this.yes_weight=true;
+  }
+}
+
+
+
+//Task 03
+public class Book{
+    public static int total_books_sold;
+    public static double total_revenue;
+    public String ti_tle;
+    public int dis_count;
+    public int pr_ice=150;
+    public double after_price;
+    
+    public Book(String title,int disc){
+        this.ti_tle=title;
+        this.dis_count=disc;
+        calculateDiscountAmount();
+        this.total_books_sold++;
+        this.total_revenue+=this.after_price;
+    }
+    public void bookDetails(){
+        System.out.printf("Titile: %s\nPrice after Discount: %.1f TK\n",this.ti_tle,this.after_price);
+    }
+    public void calculateDiscountAmount(){
+        this.after_price=this.pr_ice-((this.dis_count/100.0)*this.pr_ice);
+    }
+}
+
+
+
+//Task 04
+public class Circle{
+    private double rds;
+    public static int count;
+    public double circ_area;
+    
+    public Circle(int rad){
+        setRadius(rad);
+        count++;
+    }
+    public void setRadius(int r){
+        this.rds=r;
+    }
+    public double getRadius(){
+        return rds;
+    }
+    public double area(){
+       return this.circ_area=Math.PI*rds*rds;
+    }
+}
+
+
+
+//Task 05
+public class Borrower{
+    public static int book_count[] = {3, 3, 3};
+    public static String book_name[] = {"Pather Panchali", "Durgesh Nandini", "Anandmath"};
+    public String customer;
+    public int taken_count;
+    public String [] borrowed_books=new String [9];
+    
+    public static void bookStatus(){
+        System.out.printf("Available Books:\n");
+        for(int a=0;a<book_count.length;a++){
+            System.out.println(book_name[a]+":"+book_count[a]);
+        }                   
+    }
+    public Borrower(String cus){
+        this.customer=cus;
+    }
+    public void borrowBook(String book){
+        for(int s=0;s<book_count.length;s++){
+            if(book_name[s].equals(book)){
+                if(Borrower.remainingBooks(book)>0){ 
+                    book_count[s]--;
+                    borrowed_books[taken_count++]=book;
+                }
+                else{
+                    System.out.println("This book is not available.");
+                }
+            }
+        }
+    }
+    public void borrowerDetails(){
+        System.out.printf("Name: %s\nBooks Borrowed:\n",customer);
+        for(int l=0;l<taken_count;l++){
+            System.out.println(borrowed_books[l]);
+        }
+    }
+    public static int remainingBooks(String book){
+        for(int r=0;r<book_count.length;r++){
+            if(book_name[r].equals(book)){
+                return book_count[r]; //index er index
+            }
+        }
+        return 0;
+    }
+}
+
+
+
+//task 06
+public class Cargo{
+    public static double capacity=10.0;
+    public static int idCount;
+    
+    public String cnts;
+    public int id; 
+    public double weight;
+    public boolean loadCheck=false;
+    
+    public static double capacity(){ 
+        return capacity;
+    }
+    public Cargo(String contents, double weight){
+        this.idCount+=1;
+        this.id=idCount;
+        this.cnts=contents;
+        this.weight=weight;
+    }
+    public void details(){
+        System.out.printf("Cargo ID: %d, Content: %s,Weight: %.1f, Loaded: %b\n",id,cnts,weight,loadCheck);
+    }
+    public void load(){
+        if(weight<=capacity){
+            this.capacity-=weight;
+            this.loadCheck=true;
+            System.out.printf("Cargo %d loaded for transport.\n",idCount);
+        }
+        else{
+            System.out.println("Cannot load cargo,exceeds weight capacity.");
+        }
+    }
+    public void unload(){
+        this.capacity+=weight;
+        this.loadCheck=false;
+        System.out.printf("Cargo %d unloaded.\n",idCount);
+    }
+}
+
+
+
+//Task 07
+public class Student{
+    public static int count=1;;
+    public static int id;
+    public static int cseCount;
+    public static int otherCount;
+    public static int overall;
+    
+    public String dpt;
+    public String stName;
+    public double grade;
+    
+    public Student(String name, double cg){
+        this.stName=name;
+        this.grade=cg;
+        this.dpt="CSE";
+        cseCount++;
+        overall++;
+        this.id=count++;
+    }
+    public Student(String name, double cg,String dept){
+        this.stName=name;
+        this.grade=cg;
+        this.dpt=dept;
+        otherCount++;
+        overall++;
+        this.id=count++;
+    }
+    public void individualDetail(){
+        System.out.printf("ID: %d\nName: %s\nCGPA: %.1f\nDepertnemt: %s\n",(id++),stName,grade,dpt);
+    }
+    public static void printDetails(){
+        System.out.printf("Total Student(s): %d\nCSE Student(s): %d\nOther Depertment Student(s): %d\n",overall,cseCount,otherCount);
+    }
+}
+
+
+
+//Task 08
+public class Player{
+    public String players_country;
+    public int jersey_number;
+    public String player_name;
+    
+    public static int total;
+    public static String [] players_list=new String [11];
+    public static int count;
+    
+    public Player(String name,String country,int jersey){
+        this.player_name=name;
+        this.players_country=country;
+        this.jersey_number=jersey;
+        players_list[count++]=name;
+        total++;
+    }
+    public String player_detail(){
+        return "Player Name: "+player_name+"\nJersey Number: "+jersey_number+"\nCountry: "+players_country;
+    }
+    public static void info(){
+        System.out.printf("Total number of players: %d\nPlayers enlisted so far: ",total);
+        for(int i=0;i<total;i++){
+            if(i!=total-1){
+                System.out.print(players_list[i]+" , ");
+            }
+            else{
+                System.out.println(players_list[i]);
+            }
+        }
+    }
+}

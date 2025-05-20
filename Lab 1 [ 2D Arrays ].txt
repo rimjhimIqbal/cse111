@@ -1,0 +1,384 @@
+//ASSIGNMENT 01
+
+
+//Task - 01
+import java.util.Scanner;
+public class OddPosNum{
+    public static void main (String [] args){
+        Scanner sc = new Scanner(System.in);
+        double sum=0;
+        int max=-99999;
+        int min=9999;
+        double avg=0;
+        double count=0;
+        
+        for(int i=0;i<10;i++){
+            System.out.println("Enter a number: ");
+            int n = sc.nextInt();
+            if(n>0 && n%2!=0){
+                sum+=n;
+                count++;  //counts the odd positive numbers
+                if(n>max){
+                    max=n;
+                }
+                else if(n<min){
+                    min=n;                
+                }
+            }
+        }
+        avg=sum/count;
+        if(count==0){
+            System.out.println("No odd positive number foun");
+        }
+        else{
+        System.out.println("sum= " + (int)sum);
+        System.out.println("Minimum= " + min);
+        System.out.println("Maximum= " + max);
+        System.out.println("Average= " + avg);
+        }
+        
+    }
+}
+
+
+//Task - 02
+
+import java.util.Scanner;
+public class PrimeCheck{
+    public static void main (String [] args){
+        Scanner sc = new Scanner(System.in);
+        int primeCount=0;
+        
+        System.out.println("Enter Input:");
+        int put1=sc.nextInt();
+        int put2=sc.nextInt();
+        
+        if(put2<put1){
+            int transitory=put1; //temp
+            put1=put2;           
+            put2=transitory;     
+        }                       
+        for(int j=put1;j<=put2;j++){
+            int divisionCount=0;
+            for(int k=1;k<=j;k++){
+                if(j%k==0){
+                    divisionCount++;
+                }
+            }
+            if(divisionCount==2){
+                primeCount++;
+            }
+        }
+        System.out.println("There are " + primeCount + " prime numbers between "+ put1 + " and " + put2);
+    }
+}
+
+
+
+
+//Task - 03
+
+import java.util.Scanner;
+public class ConcatStringAscii{
+    public static void main (String [] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an input");
+        String put1=sc.nextLine();
+        System.out.println("Enter another input");
+        String put2=sc.nextLine();
+        String connect=put1 + " " + put2;
+        System.out.println(connect);
+        
+        int addConcat=0;     
+        for(int i=0;i<connect.length();i++){ //String e length() hoy
+            char find=connect.charAt(i);
+            if((find>=(int)'A' && find<=(int)'Z') || (find>=(int)'a' && find<=(int)'z' )){
+                
+                addConcat+=find;   
+            }
+        }
+        System.out.print(addConcat);
+    }
+}
+
+
+
+//Task - 04
+
+import java.util.Scanner;
+public class PrintPrevAlpha{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String take=sc.nextLine();
+        
+        for(int i=0;i<take.length();i++){
+            char search=take.charAt(i);
+            if(search>'a' && search<='z'){
+                int changed=(int)search-1;
+                char hey= (char)changed;
+                System.out.print(hey);
+            }
+            else if(search=='a'){
+                System.out.print("z");
+            }
+        }
+    }
+}
+
+
+	
+//Task - 05
+
+import java.util.Scanner;
+public class InPlaceReverseArray{
+    public static void main(String [] args){
+        Scanner sc=new Scanner (System.in);
+        System.out.println("Enter the length of an array: ");
+        int lenArr=sc.nextInt();
+        int [] thv = new int [lenArr];
+        
+        System.out.println("Enter the values: ");
+        for(int p=0;p<lenArr;p++){
+            thv[p]=sc.nextInt();
+        }
+        for(int i=0,j=lenArr-1;i<j;i++,j--){
+            int temp=thv[i];
+            thv[i]=thv[j];  
+            thv[j]=temp;   
+        }  
+        
+        for(int p=0;p<lenArr;p++){
+            System.out.print(thv[p] + " ");
+        }
+    }
+}
+
+
+
+//Task - 06
+
+import java.util.Scanner;
+public class CountRepeatedNum{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter N: ");
+        int siz=sc.nextInt();
+        int [] rkive = new int [siz];
+        
+        for(int k=0;k<siz;k++){
+            rkive[k]=sc.nextInt();
+        }
+        System.out.println("N = " + siz);
+        
+        for(int i=0;i<siz;i++){
+            int count=1;
+            boolean nDone=false;
+            for(int n=0;n<i;n++){
+                if(rkive[i]==rkive[n]){
+                    nDone=true;
+                    break;
+                }
+            }
+            if(!nDone){
+                for(int j=i+1;j<siz;j++){
+                    if(rkive[i]==rkive[j]){
+                        count++;
+                    }
+                }
+                System.out.println(rkive[i] + " - " + count + " times");
+            }
+        }
+    }
+}
+
+
+
+
+
+//Task - 07
+
+import java.util.Scanner;
+public class RemoveElems{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        int N=sc.nextInt();
+        double [] hobi=new double [N];
+        
+        int i=0;
+        while(i<hobi.length){
+            hobi[i]=sc.nextDouble();
+            i++;
+        }
+        double [] suga=new double[N];
+        int removed=0;
+        int unique=0;
+        
+        if(N>0){
+            suga[unique]=hobi[0];
+            unique++;
+        }
+        int t=1;
+        while(t<N){
+            if(hobi[t]!=hobi[t-1]){
+                suga[unique++]=hobi[t];     
+            }
+            else{
+                removed++;
+            }
+            t++;
+        }
+        System.out.print("New Array: ");
+        int k=0;
+        while(k<unique){
+            System.out.print(suga[k]+" ");
+            k++;
+        }
+        System.out.println();
+        System.out.println("Removed elements: "+removed);
+    }
+}
+
+//Task - 08
+
+import java.util.Scanner;
+public class FlatterArray{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Row: ");
+        int row=sc.nextInt();
+        System.out.println("Column: ");
+        int col=sc.nextInt();
+        int [][] the2D=new int [row][col];
+        
+        System.out.println("Enter the values here-");
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                the2D[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("2D Array: ");
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                System.out.print(the2D[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int siize= row*col;
+        int [] the1D = new int [siize];
+        int tempo=0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                the1D[tempo]=the2D[i][j];
+                tempo++;
+            }
+        }
+        System.out.println("1D Array: ");
+        int k=0;
+        while(k<siize){
+            System.out.print(the1D[k] + " ");
+            k++;
+        }
+    }
+}
+
+
+//Task - 09
+
+import java.util.Scanner;
+public class IdentityCheck{
+    public static void main(String [] args){
+        Scanner sc = new Scanner(System.in);
+        int N=sc.nextInt();
+        int [][] A = new int[N] [N];
+        boolean flag=true;
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                A[i][j]=sc.nextInt();
+                if((i==j && A[i][j]!=1)||(i!=j && A[i][j]!=0)){
+                    flag=false;
+                }
+            }
+        }
+        if(flag){
+            System.out.println("Identity Matrix");
+        }
+        else{
+            System.out.println("Not an Identity Matrix");
+        }
+    }
+}
+
+//Task - 10
+
+import java.util.Scanner;
+public class TreasureHunt{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int [][] arr2D = {{0, 0, 10, 0, -1},
+            {0, -1, 0, 0, -1},
+            {-1, 0, -1, 0, 0},
+            {0, -1, 7, 0, -1},
+            {0, -1, 0, -1, 0}
+        };
+        System.out.println("Initial Map:");
+        printMap(arr2D);
+        int row = arr2D.length;
+        int col = arr2D[0].length;
+        int row_pos = -1, col_pos = -1;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(arr2D[i][j]==7){
+                    row_pos=i;
+                    col_pos=j;
+                    break;
+                }
+            }
+        }
+        System.out.prinln("Treasure found. You win!");
+        
+        
+        int turns = 5;
+        while (turns > 0){
+            int new_row = row_pos, new_col = col_pos;
+            System.out.printf("Enter move %d: ",(6-turns));
+            String inp = sc.nextLine();
+            if(inp.equals("RIGHT")){
+                col_pos+=1;
+            }
+            else if(inp.equals("LEFT"){
+                col_pos-=1;
+            }
+             else if(inp.equals("UP"){
+                 row_pos-=1;
+             }
+             else if(inp[i].equals("DOWN"){
+                  row_pos+=1;
+             }
+             System.out.println("Current state:");
+             printMap(arr2D);
+                     turns--;
+                     }
+             if (turns == 0) {
+                 System.out.println("Failed to find the treasure.");
+             }
+             if (turns == -1) {
+                 System.out.println("Player stepped on mine. Game Over!");
+             }
+             if (new_col==-1) {
+                 System.out.println("Player fell outside the playing area. Game over!");
+             }
+          }
+     }
+  }
+  
+  public static void printMap(int[][] arr) { 
+      for(int i=0;i<arr2D.length;i++){
+          for(int j=0;j<arr2D[1].length;j++){
+              System.out.print(arr2D[i][j]+ " ");
+          }
+          System.out.println();
+      }
+  }
+}
+
