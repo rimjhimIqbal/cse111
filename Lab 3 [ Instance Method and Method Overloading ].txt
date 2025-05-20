@@ -278,3 +278,58 @@ public class Reader{
         }
     }
 }
+
+
+//Ungraded
+
+
+//Task - 05 (03)
+public class CalculatorTester {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        
+        System.out.println("1=============");
+        calc.add(10, 20);
+        System.out.println("2=============");
+        calc.add(5, 15, 25);
+        System.out.println("3=============");
+        calc.multiply(6, 7);
+        System.out.println("4=============");
+        calc.multiply(2, 3, 4);
+        System.out.println("5=============");
+        calc.multiply("Hello", 3);
+        System.out.println("6=============");
+        calc.multiply("Java", 5);
+    }
+}
+class Calculator{
+    public String value;
+    public String [] arr;
+    public void add(int a,int b){
+        System.out.println(a+b);
+    }
+    public void add(int c,int d,int e){
+        System.out.println(c+d+e);
+    }
+    public void multiply(int a,int b){
+        System.out.println(a*b);
+    }
+    public void multiply(int a,int b,int c){
+        System.out.println(a*b*c);
+    }
+    public void multiply(String a,int b){
+        arr=new String [b];
+        for(int j=0;j<b;j++){
+            arr[j]=a;
+        }
+        for(int i=0;i<b;i++){
+            if(i<b-1){
+            System.out.print(arr[i]+"-");
+            }
+            else{
+                System.out.print(arr[i]);
+            }
+        }
+        System.out.println();
+    }
+}
