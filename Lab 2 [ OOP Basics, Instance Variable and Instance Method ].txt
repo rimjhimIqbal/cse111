@@ -47,14 +47,33 @@ public class UniversityTester{
 
 
 //Task - 02
-public class Student{
+public class StudentTester1{
+   public static void main(String [] args){
+      Student s1 = new Student();
+      System.out.println("Name of the Student: "+s1.name);
+      System.out.println("ID of the Student: "+s1.id);
+      s1.name = "Bob";
+      s1.id = 123;
+      System.out.println("Name of the Student: "+s1.name);
+      System.out.println("ID of the Student: "+s1.id);
+   }
+}
+class Student{
     public String name="Default";
     public int id;
 }
 
 
 //Task - 03
-public class CSECourse{
+public class CourseTester{
+  public static void main(String args []){
+    CSECourse c1 = new CSECourse();
+    System.out.println("Course Name: "+c1.courseName);
+    System.out.println("Course Code: "+c1.courseCode);
+    System.out.println("Credit: "+c1.credit);
+   }
+}
+class CSECourse{
     public String courseName="Programming Language II";
     public String courseCode="CSE111";
     public int credit=3;
@@ -62,7 +81,22 @@ public class CSECourse{
 
 
 //Task - 04
-public class ImaginaryNumber{
+public class Tester6{
+  public static void main(String [] args){
+     ImaginaryNumber num1 = new ImaginaryNumber();
+     num1.printNumber();
+     System.out.println("1********");
+     num1.realPart=3;
+     num1.imaginaryPart=7;
+     num1.printNumber();
+     System.out.println("2********");
+     ImaginaryNumber num2 = new ImaginaryNumber();
+     num2.realPart=1;
+     num2.imaginaryPart=9;
+     num2.printNumber();
+    }
+}
+class ImaginaryNumber{
     public int realPart;
     public int imaginaryPart;
     
@@ -73,6 +107,21 @@ public class ImaginaryNumber{
 
 
 //Task - 05
+public class Tester5{
+  public static void main(String[] args) {
+    Course c1 = new Course();
+    Course c2 = new Course();  
+    c1.updateDetails("Programming Language I","CSE110", 3);
+    System.out.println("========== 1 ==========");
+    c1.displayCourse(); 
+    c2.updateDetails("Data Structures","CSE220", 3);
+    System.out.println("========== 2 ==========");
+    c2.displayCourse();  
+    c1.updateDetails("Programming Language II","CSE111", 3);
+    System.out.println("========== 3 ==========");
+    c1.displayCourse();
+  }
+}
 class Course{
     public String couName;
     public String couCode;
@@ -90,7 +139,30 @@ class Course{
 
 
 //Task - 06
-public class Assignment{
+public class AssignmentTester{
+  public static void main(String [] args){
+    Assignment as1 = new Assignment();
+    as1.printDetails();
+    System.out.println("1---------------");
+    as1.tasks = 11;
+    as1.difficulty = "Moderate";
+    as1.submission = true;
+    as1.printDetails();
+    System.out.println("2---------------");
+    System.out.println(as1.makeOptional());
+    System.out.println("3---------------");
+    as1.printDetails();
+    System.out.println("4---------------");
+    Assignment as2 = new Assignment();
+    as2.tasks = 12;
+    as2.difficulty = "Hard";
+    as2.submission = false;
+    as2.printDetails();
+    System.out.println("5---------------");
+    System.out.println(as2.makeOptional());
+  }
+}
+class Assignment{
     public int tasks;
     public String difficulty;
     public boolean submission=false;
@@ -113,7 +185,27 @@ public class Assignment{
 
 
 //Task - 07
-public class CellPhone{
+public class Tester9{
+  public static void main(String[]args){
+     CellPhone phone1 = new CellPhone();
+     phone1.printDetails();
+     phone1.model ="Nokia 1100";
+     System.out.println("1##################");
+     phone1.storeContact("Joy - 01834");
+     System.out.println("===================");
+     phone1.printDetails();
+     System.out.println("2##################");
+     phone1.storeContact("Toya - 01334");
+     phone1.storeContact("Aayan - 01135");
+     System.out.println("===================");
+     phone1.printDetails();
+     System.out.println("3##################");
+     phone1.storeContact("Sani - 01441");
+     System.out.println("===================");
+     phone1.printDetails();  
+  }
+}
+class CellPhone{
     public String model="Unknown";
     public int stores=0;
     public String [] phoneCons=new String [3];
@@ -144,7 +236,39 @@ public class CellPhone{
 
 //Task - 08
 
-public class Employee{
+public class Tester3{
+  public static void main(String[] args){
+
+    Employee emp1 = new Employee();
+    Employee emp2 = new Employee();
+    Employee emp3 = new Employee();
+      
+    emp1.newEmployee("Harry Potter");
+    emp2.newEmployee("Hermione Granger");
+    emp3.newEmployee("Ron Weasley");
+    System.out.println("1 ==========");
+    emp1.displayInfo();
+    System.out.println("2 ==========");
+    emp2.displayInfo();
+    System.out.println("3 ==========");
+    emp3.displayInfo();
+    System.out.println("4 ==========");
+    emp1.calculateTax();
+    System.out.println("5 ==========");
+    emp1.promoteEmployee("lead");
+    System.out.println("6 ==========");
+    emp1.calculateTax();
+    System.out.println("7 ==========");
+    emp1.displayInfo();
+    System.out.println("8 ==========");
+    emp3.promoteEmployee("manager");
+    System.out.println("9 ==========");
+    emp3.calculateTax();
+    System.out.println("10 ==========");
+    emp3.displayInfo();
+  }
+}
+class Employee{
     public String nme;
     public double slary;
     public String desig;
@@ -196,7 +320,21 @@ public class Employee{
 
 
 //Task - 01 (02)
-public class CatTest7{
+public class Test7{
+    public static void main(String [] args){ 
+        Cat c1 = new Cat(); 
+        System.out.println("===================");
+        c1.printCat();
+        c1.color = "Black"; 
+        System.out.println("===================");
+        c1.printCat(); 
+        c1.color = "Brown"; 
+        c1.action = "jumping"; 
+        System.out.println("===================");
+        c1.printCat(); 
+    } 
+} 
+class CatTest7{
     public static void main(String [] args){ 
         Cat c1 = new Cat(); 
         System.out.println("===================");
@@ -223,7 +361,23 @@ class Cat{
 
 
 //Task - 02 (02)
-public class BirdTest8{
+public class Test8{
+    public static void main(String args[]) { 
+        Bird b1 = new Bird();
+        b1.name = "Parrot";
+        b1.flyUp(3);
+        b1.makeNoise();
+        b1.flyDown(5);
+        b1.flyDown(2);
+        b1.flyDown(1);
+        Bird b2 = new Bird();
+        b2.name = "Eagle"; 
+        b2.flyUp(5);
+        b2.flyDown(5);
+        b2.makeNoise(); 
+    }  
+}
+class BirdTest8{
     public static void main(String args[]) { 
         Bird b1 = new Bird();
         b1.name = "Parrot";
@@ -274,6 +428,30 @@ class Bird{
      
 //Ungraded Task - 03 (02)
 public class BurgerMaker{
+ public static void main(String [] args){
+   ChickenBurger b1 = new ChickenBurger();
+   System.out.println(b1.bun);
+   System.out.println(b1.price);
+   System.out.println(b1.sauceOption);
+   System.out.println(b1.spiceLevel);
+   System.out.println("----------1----------");
+   System.out.println(b1.serveBurger());
+   System.out.println("----------2----------");
+   b1.customizeSpiceLevel("Extreme Jhaal");
+   b1.customizeSpiceLevel("Spicy");
+   System.out.println("----------3----------");
+   System.out.println(b1.serveBurger());
+   System.out.println("----------4----------");
+   ChickenBurger b2 = new ChickenBurger();
+   b2.bun = "Brioche";
+   b2.price += 50;
+   b2.sauceOption = "Regular";
+   b2.customizeSpiceLevel("Naga");
+   System.out.println("----------5----------");
+   System.out.println(b2.serveBurger());
+ }
+}
+class BurgerMaker{
     public static void main(String [] args){
         ChickenBurger b1 = new ChickenBurger();
         System.out.println(b1.bun);
